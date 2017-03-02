@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import Section from '../Section';
 import './style.css';
 
 class About extends Component {
   render() {
     return (
-      <section className="about">
-        <h2 className="heading">ABOUT ME</h2>
+      <Section sectionName="about" title="ABOUT ME">
         <p className="about-text">
           このページはReactでSPAを作るときのシンプルなサンプルです。
         </p>
-      </section>
+      </Section>
     );
   }
 }
