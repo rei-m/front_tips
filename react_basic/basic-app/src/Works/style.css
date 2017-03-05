@@ -1,22 +1,13 @@
-.heading {
-  position: relative;
-  display: inline-block;
-  margin: 30px 0 15px;
-  padding-bottom: 15px;
-  letter-spacing: 2px;
-  font-size: 4rem;
+@charset "UTF-8";
+
+.works {
+  background-color: #383634;
+  padding: 80px;
 }
 
-.heading::before,
-.heading::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-bottom: 1px solid #999;
-}
-
-.heading::before {
-  bottom: 5px;
+.works-wrapper {
+  display: table;
+  width: 100%;
+  margin-top: 60px;
+  table-layout: fixed;
 }
