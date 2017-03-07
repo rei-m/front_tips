@@ -5,7 +5,7 @@ class Box extends Component {
   render() {
     return (
       <div className="work-box">
-        <img src={this.props.imageFileName} alt={this.props.imageAlt} className="work-image" />
+        <img src={this.props.src} alt={this.props.alt} className="work-image" />
         <div className="work-description">
           <div className="work-description-inner">
             <p className="work-text">

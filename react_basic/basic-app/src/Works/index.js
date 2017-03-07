@@ -8,22 +8,22 @@ class Works extends Component {
     return (
       <Section sectionName="works" title="WORKS">
         <div className="works-wrapper">
-          <Box imageFileName="/images/1.jpg" imageAlt="いちまいめ">
+          <Box src="/images/1.jpg" alt="いちまいめ">
             ひとつめの制作事例が入ります。<br />
             簡単な説明が入ります。<br />
             ツール : XXX, XXX, XXX <br />
           </Box>
-          <Box imageFileName="/images/2.jpg" imageAlt="にまいめ">
+          <Box src="/images/2.jpg" alt="にまいめ">
             ふたつめの制作事例が入ります。<br />
             簡単な説明が入ります。<br />
             ツール : XXX, XXX, XXX <br />
           </Box>
-          <Box imageFileName="/images/3.jpg" imageAlt="さんまいめ">
+          <Box src="/images/3.jpg" alt="さんまいめ">
             みっつめの制作事例が入ります。<br />
             簡単な説明が入ります。<br />
             ツール : XXX, XXX, XXX <br />
           </Box>
-          <Box imageFileName="/images/4.jpg" imageAlt="よんまいめ">
+          <Box src="/images/4.jpg" alt="よんまいめ">
             よっつめの制作事例が入ります。<br />
             簡単な説明が入ります。<br />
             ツール : XXX, XXX, XXX <br />
