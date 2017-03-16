@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './style.css';
 
 class Box extends Component {
+
+  static propTypes = {
+    src: React.PropTypes.string.isRequired,
+    alt: React.PropTypes.string.isRequired
+  }
+
   render() {
     return (
       <div className="work-box">

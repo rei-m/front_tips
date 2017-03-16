@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './style.css';
 
 class Section extends Component {
+
+  static propTypes = {
+    sectionName: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string.isRequired
+  }
+
   render() {
     return (
       <section className={this.props.sectionName}>

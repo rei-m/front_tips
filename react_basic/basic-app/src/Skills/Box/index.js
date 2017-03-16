@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './style.css';
 
 class Box extends Component {
+
+  static propTypes = {
+    icon: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string.isRequired
+  }
+
   render() {
     return (
       <div className="skill-box">
