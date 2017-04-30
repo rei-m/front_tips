@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux';
-import { GlobalState } from '../reducers/index';
 import { addTodo } from '../actions';
 import AddTodoForm from '../components/AddTodoForm';
+import { GlobalState } from '../reducers/index';
 
 export interface Props {
 }
@@ -15,13 +15,13 @@ const mapDispatchToProps = (dispatch: Dispatch<GlobalState>, props: Props) => {
   return {
     onSubmit: (name: string) => {
       dispatch(addTodo(name));
-    }
+    },
   };
 };
 
 const AddTodo = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AddTodoForm);
 
 export default AddTodo;

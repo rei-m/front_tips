@@ -15,22 +15,23 @@ class Link extends React.Component<Props & FilterLinkProps, void> {
 
   public render(): JSX.Element {
 
-    const { active, children, onClick } = this.props;
+    const { active, children } = this.props;
 
     if (active) {
       return <span>{children}</span>;
     }
 
     return (
-      <a href="#"
-         onClick={e => {
-           e.preventDefault();
-           onClick();
-         }}
-      >
+      <a href="#" onClick={this.handleOnClick}>
         {children}
       </a>
     );
+  }
+
+  private handleOnClick(e: React.SyntheticEvent<HTMLAnchorElement>) {
+    const { onClick } = this.props;
+    e.preventDefault();
+    onClick();
   }
 }
 

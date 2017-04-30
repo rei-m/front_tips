@@ -1,12 +1,8 @@
 import * as React from 'react';
-import Todo from './Todo';
+import Todo, { Props as TodoProps } from './Todo';
 
 export interface Props {
-  todos: {
-    id: number,
-    completed: boolean,
-    text: string
-  }[];
+  todos: TodoProps[];
   onTodoClick: (id: number) => void;
 }
 
@@ -20,14 +16,16 @@ class TodoList extends React.Component<Props, void> {
 
     const { todos, onTodoClick } = this.props;
 
+    const todoElements = todos.map((todo) =>
+      <Todo
+        {...todo}
+        onClick={onTodoClick}
+      />,
+    );
+
     return (
       <ul>
-        {todos.map(todo =>
-          <Todo
-            {...todo}
-            onClick={onTodoClick}
-          />
-        )}
+        {todoElements}
       </ul>
     );
   }

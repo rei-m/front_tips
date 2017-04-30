@@ -13,9 +13,9 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
  * other constants
  */
 export const VisibilityFilter = {
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
 export interface SetVisibilityFilterAction extends Action {
@@ -39,22 +39,22 @@ export interface ToggleTodoAction extends Action {
  */
 export function addTodo(text: string): AddTodoAction {
   return {
-    type: ADD_TODO,
     id: nextTodoId++,
-    text: text
+    text: text,
+    type: ADD_TODO,
   };
 }
 
 export function toggleTodo(id: number): ToggleTodoAction {
   return {
+    id: id,
     type: TOGGLE_TODO,
-    id: id
   };
 }
 
 export function setVisibilityFilter(filter: string): SetVisibilityFilterAction {
   return {
+    filter: filter,
     type: SET_VISIBILITY_FILTER,
-    filter: filter
   };
 }

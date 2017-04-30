@@ -8,15 +8,15 @@ const getVisibleTodos = (todos: Todo[], filter: string) => {
     case VisibilityFilter.SHOW_ALL:
       return todos;
     case VisibilityFilter.SHOW_COMPLETED:
-      return todos.filter(t => t.completed);
+      return todos.filter((t) => t.completed);
     case VisibilityFilter.SHOW_ACTIVE:
-      return todos.filter(t => !t.completed);
+      return todos.filter((t) => !t.completed);
   }
 };
 
 const mapStateToProps = (state: GlobalState) => {
   return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    todos: getVisibleTodos(state.todos, state.visibilityFilter),
   };
 };
 
@@ -24,13 +24,13 @@ const mapDispatchToProps = (dispatch: Dispatch<GlobalState>) => {
   return {
     onTodoClick: (id: number) => {
       dispatch(toggleTodo(id));
-    }
+    },
   };
 };
 
 const VisibleTodoList = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(TodoList);
 
 export default VisibleTodoList;

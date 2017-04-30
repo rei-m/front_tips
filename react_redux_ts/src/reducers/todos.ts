@@ -1,13 +1,18 @@
+import {
+  ADD_TODO,
+  AddTodoAction,
+  TOGGLE_TODO,
+  ToggleTodoAction,
+} from '../actions';
 import { Todo } from '../reducers/index';
-import { AddTodoAction, ToggleTodoAction, ADD_TODO, TOGGLE_TODO } from '../actions';
 
 const todo = (state: Todo, action: AddTodoAction & ToggleTodoAction): Todo => {
   switch (action.type) {
     case ADD_TODO:
       return {
+        completed: false,
         id: action.id,
         text: action.text,
-        completed: false
       };
     case TOGGLE_TODO:
       if (state.id !== action.id) {
@@ -15,7 +20,7 @@ const todo = (state: Todo, action: AddTodoAction & ToggleTodoAction): Todo => {
       }
 
       return Object.assign({}, state, {
-        completed: !state.completed
+        completed: !state.completed,
       });
 
     default:
@@ -29,14 +34,14 @@ const todos = (state: Todo[] = [], action: AddTodoAction & ToggleTodoAction) => 
       return [
         ...state,
         todo({
+          completed: false,
           id: action.id,
           text: action.text,
-          completed: false
-        }, action)
+        }, action),
       ];
     case TOGGLE_TODO:
-      return state.map(t =>
-        todo(t, action)
+      return state.map((t) =>
+        todo(t, action),
       );
     default:
       return state;

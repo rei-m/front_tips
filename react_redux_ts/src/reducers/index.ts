@@ -2,20 +2,20 @@ import { combineReducers, Reducer } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
 
-export type GlobalState = {
+export interface GlobalState {
   todos: Todo[];
   visibilityFilter: string;
-};
+}
 
-export type Todo = {
+export interface Todo {
   id: number;
   text: string;
   completed: boolean;
-};
+}
 
 const todoApp: Reducer<GlobalState> = combineReducers<GlobalState>({
   todos,
-  visibilityFilter
+  visibilityFilter,
 });
 
 export default todoApp;

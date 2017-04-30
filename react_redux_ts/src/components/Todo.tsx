@@ -14,18 +14,27 @@ class Todo extends React.Component<Props, void> {
   }
 
   public render(): JSX.Element {
-    const { id, text, completed, onClick } = this.props;
+
+    const { id, text, completed } = this.props;
+
+    const decorationStyle = {
+      textDecoration: completed ? 'line-through' : 'none',
+    };
+
     return (
       <li
         key={id}
-        onClick={() => onClick(id)}
-        style={{
-          textDecoration: completed ? 'line-through' : 'none'
-        }}
+        onClick={this.handleOnClick}
+        style={decorationStyle}
       >
         {text}
       </li>
     );
+  }
+
+  private handleOnClick(e: React.SyntheticEvent<HTMLLIElement>) {
+    const { id, onClick } = this.props;
+    onClick(id);
   }
 }
 
