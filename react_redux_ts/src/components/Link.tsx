@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Props as FilterLinkProps } from '../containers/FilterLink'
+import { Props as FilterLinkProps } from '../containers/FilterLink';
 
 export interface Props {
   active: boolean;
   children: JSX.Element;
   onClick: () => void;
-};
+}
 
 class Link extends React.Component<Props & FilterLinkProps, void> {
 
@@ -18,14 +18,14 @@ class Link extends React.Component<Props & FilterLinkProps, void> {
     const { active, children, onClick } = this.props;
 
     if (active) {
-      return <span>{children}</span>
+      return <span>{children}</span>;
     }
 
     return (
       <a href="#"
          onClick={e => {
-           e.preventDefault()
-           onClick()
+           e.preventDefault();
+           onClick();
          }}
       >
         {children}

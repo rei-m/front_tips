@@ -8,7 +8,7 @@ export interface Props {
     text: string
   }[];
   onTodoClick: (id: number) => void;
-};
+}
 
 class TodoList extends React.Component<Props, void> {
 
@@ -33,4 +33,4 @@ class TodoList extends React.Component<Props, void> {
   }
 }
 
-export default TodoList
+export default TodoList;

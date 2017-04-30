@@ -1,39 +1,31 @@
-import {
-  AddTodoAction,
-  ToggleTodoAction
-} from '../actions'
+import { Todo } from '../reducers/index';
+import { AddTodoAction, ToggleTodoAction, ADD_TODO, TOGGLE_TODO } from '../actions';
 
-export type TodoState = {
-  id: number;
-  text: string;
-  completed: boolean;
-}
-
-const todo = (state: TodoState, action: AddTodoAction & ToggleTodoAction): TodoState => {
+const todo = (state: Todo, action: AddTodoAction & ToggleTodoAction): Todo => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case ADD_TODO:
       return {
         id: action.id,
         text: action.text,
         completed: false
-      }
-    case 'TOGGLE_TODO':
+      };
+    case TOGGLE_TODO:
       if (state.id !== action.id) {
-        return state
+        return state;
       }
 
       return Object.assign({}, state, {
         completed: !state.completed
-      })
+      });
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-const todos = (state: TodoState[] = [], action: AddTodoAction & ToggleTodoAction) => {
+const todos = (state: Todo[] = [], action: AddTodoAction & ToggleTodoAction) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case ADD_TODO:
       return [
         ...state,
         todo({
@@ -41,14 +33,14 @@ const todos = (state: TodoState[] = [], action: AddTodoAction & ToggleTodoAction
           text: action.text,
           completed: false
         }, action)
-      ]
-    case 'TOGGLE_TODO':
+      ];
+    case TOGGLE_TODO:
       return state.map(t =>
         todo(t, action)
-      )
+      );
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default todos
+export default todos;

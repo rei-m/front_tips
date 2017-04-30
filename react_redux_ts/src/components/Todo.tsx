@@ -4,8 +4,8 @@ export interface Props {
   id: number;
   text: string;
   completed: boolean;
-  onClick: (id:number) => void;
-};
+  onClick: (id: number) => void;
+}
 
 class Todo extends React.Component<Props, void> {
 
@@ -29,4 +29,4 @@ class Todo extends React.Component<Props, void> {
   }
 }
 
-export default Todo
+export default Todo;
