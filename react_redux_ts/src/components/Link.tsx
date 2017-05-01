@@ -11,6 +11,7 @@ class Link extends React.Component<Props & FilterLinkProps, void> {
 
   constructor(props: Props & FilterLinkProps) {
     super(props);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   public render(): JSX.Element {

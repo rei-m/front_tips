@@ -18,6 +18,7 @@ class TodoList extends React.Component<Props, void> {
 
     const todoElements = todos.map((todo) =>
       <Todo
+        key={todo.id}
         {...todo}
         onClick={onTodoClick}
       />,

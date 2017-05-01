@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -8,18 +9,18 @@ module.exports = {
   },
 
   // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  devtool: 'source-map',
 
   resolve: {
       // Add '.ts' and '.tsx' as resolvable extensions.
-      extensions: [".ts", ".tsx", ".js", ".json"]
+      extensions: ['.ts', '.tsx', '.js', '.json']
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "awesome-typescript-loader"
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.ts(x?)$/,
@@ -27,10 +28,25 @@ module.exports = {
         loader: 'tslint-loader'
       },
       {
-        enforce: "pre",
         test: /\.js$/,
-        loader: "source-map-loader"
-      }
+        enforce: 'pre',
+        loader: 'source-map-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]'
+        })
+      },
     ]
   },
+
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      disable: false,
+      allChunks: true,
+    })
+  ]
 };

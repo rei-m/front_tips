@@ -11,21 +11,21 @@ class Todo extends React.Component<Props, void> {
 
   constructor(props: Props) {
     super(props);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   public render(): JSX.Element {
 
-    const { id, text, completed } = this.props;
+    const { text, completed } = this.props;
 
-    const decorationStyle = {
+    const style = {
       textDecoration: completed ? 'line-through' : 'none',
     };
 
     return (
       <li
-        key={id}
         onClick={this.handleOnClick}
-        style={decorationStyle}
+        style={style}
       >
         {text}
       </li>
