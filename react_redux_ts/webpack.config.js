@@ -1,6 +1,10 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// やりたいこと
+// d.tsをbundleする
+// webpackDevServerを起動してHMDを有効にする
+
 module.exports = {
   entry: './src/index.tsx',
   output: {

@@ -7,33 +7,22 @@ export interface Props {
   onClick: () => void;
 }
 
-class Link extends React.Component<Props & FilterLinkProps, void> {
+const Link = (props: Props & FilterLinkProps): JSX.Element => {
 
-  constructor(props: Props & FilterLinkProps) {
-    super(props);
-    this.handleOnClick = this.handleOnClick.bind(this);
+  if (props.active) {
+    return <span>{props.children}</span>;
   }
 
-  public render(): JSX.Element {
-
-    const { active, children } = this.props;
-
-    if (active) {
-      return <span>{children}</span>;
-    }
-
-    return (
-      <a href="#" onClick={this.handleOnClick}>
-        {children}
-      </a>
-    );
-  }
-
-  private handleOnClick(e: React.SyntheticEvent<HTMLAnchorElement>) {
-    const { onClick } = this.props;
+  const handleOnClick = (e: React.SyntheticEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    onClick();
-  }
-}
+    props.onClick();
+  };
+
+  return (
+    <a href="#" onClick={handleOnClick}>
+      {props.children}
+    </a>
+  );
+};
 
 export default Link;

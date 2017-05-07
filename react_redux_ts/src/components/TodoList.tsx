@@ -6,30 +6,21 @@ export interface Props {
   onTodoClick: (id: number) => void;
 }
 
-class TodoList extends React.Component<Props, void> {
+const TodoList = (props: Props): JSX.Element => {
 
-  constructor(props: Props) {
-    super(props);
-  }
+  const todoElements = props.todos.map((todo) =>
+    <Todo
+      key={todo.id}
+      {...todo}
+      onClick={props.onTodoClick}
+    />,
+  );
 
-  public render(): JSX.Element {
-
-    const { todos, onTodoClick } = this.props;
-
-    const todoElements = todos.map((todo) =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={onTodoClick}
-      />,
-    );
-
-    return (
-      <ul>
-        {todoElements}
-      </ul>
-    );
-  }
-}
+  return (
+    <ul>
+      {todoElements}
+    </ul>
+  );
+};
 
 export default TodoList;

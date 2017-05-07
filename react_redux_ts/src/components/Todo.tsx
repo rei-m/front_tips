@@ -7,35 +7,58 @@ export interface Props {
   onClick: (id: number) => void;
 }
 
-class Todo extends React.Component<Props, void> {
+const Todo = (props: Props): JSX.Element => {
 
-  constructor(props: Props) {
-    super(props);
-    this.handleOnClick = this.handleOnClick.bind(this);
-  }
+  const style = {
+    textDecoration: props.completed ? 'line-through' : 'none',
+  };
 
-  public render(): JSX.Element {
+  const handleOnClick = (e: React.SyntheticEvent<HTMLLIElement>) => {
+    props.onClick(props.id);
+  };
 
-    const { text, completed } = this.props;
+  return (
+    <li
+      onClick={handleOnClick}
+      style={style}
+    >
+      {props.text}
+    </li>
+  );
+};
 
-    const style = {
-      textDecoration: completed ? 'line-through' : 'none',
-    };
-
-    return (
-      <li
-        onClick={this.handleOnClick}
-        style={style}
-      >
-        {text}
-      </li>
-    );
-  }
-
-  private handleOnClick(e: React.SyntheticEvent<HTMLLIElement>) {
-    const { id, onClick } = this.props;
-    onClick(id);
-  }
-}
+// ライフサイクルを意識する場合や、Stateの管理が必要な場合はReactComponentを継承した形で書く.
+// プロパティを受け取って表示するだけの場合は上記のPropsを引数に取ってElementを返す関数で足りる.
+//
+// class Todo extends React.Component<Props, void> {
+//
+//   constructor(props: Props) {
+//     super(props);
+//     this.handleOnClick = this.handleOnClick.bind(this);
+//   }
+//
+//   public render(): JSX.Element {
+//
+//     const { text, completed } = this.props;
+//
+//     const style = {
+//       textDecoration: completed ? 'line-through' : 'none',
+//     };
+//
+//     return (
+//       <li
+//         onClick={this.handleOnClick}
+//         style={style}
+//       >
+//         {text}
+//       </li>
+//     );
+//   }
+//
+//   private handleOnClick(e: React.SyntheticEvent<HTMLLIElement>) {
+//     const { id, onClick } = this.props;
+//     onClick(id);
+//   }
+// }
 
 export default Todo;
